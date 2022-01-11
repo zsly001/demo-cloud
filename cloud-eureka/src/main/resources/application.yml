@@ -1,0 +1,10 @@
+server:
+  port: 7001
+eureka:
+  instance:
+    appname: ek-server
+  client:
+    register-with-eureka: false  #注册中心自己不注册到注册中心
+    fetch-registry: false   #自己是注册中心,指责就是维护服务实力,不需要检索服务
+    service-url:
+      defaultZone: http://${eureka.instance.appname}:${server.port}/eureka/

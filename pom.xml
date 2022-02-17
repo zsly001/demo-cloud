@@ -12,6 +12,8 @@
         <module>cloud-provider</module>
         <module>cloud-consumer</module>
         <module>cloud-eureka</module>
+        <module>consul-app1</module>
+        <module>consul-app2</module>
     </modules>
     <packaging>pom</packaging>
 

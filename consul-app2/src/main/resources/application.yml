@@ -1,0 +1,16 @@
+server:
+  port: 6070
+
+spring:
+  cloud:
+    consul:
+      host: 10.182.24.107
+      port: 8501
+    loadbalancer:
+      ribbon:
+        enabled: false
+  application:
+    name: demo-cousul-client
+
+
+

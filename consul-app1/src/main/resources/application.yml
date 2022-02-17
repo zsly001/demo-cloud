@@ -1,0 +1,32 @@
+server:
+  port: 6060
+spring:
+  cloud:
+    consul:
+      host: 10.182.24.107
+      port: 8501
+      discovery:
+        instance-id: sb-app-1:${server.port}
+        service-name: sb-app-1-${spring.application.name}
+        healthCheckPath: /actuator/health
+        healthCheckInterval: 5s
+        tags: a=1,b=2,c=3,[a,b]
+        metadata: {"name": "example","port": 666,"a":"{a=b}"}
+  application:
+    name: demo-cloud
+
+
+management:
+  server:
+   port: 6061
+  endpoint:
+    info:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+
+
+

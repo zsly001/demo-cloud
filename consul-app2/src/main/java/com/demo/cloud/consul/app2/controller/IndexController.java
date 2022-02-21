@@ -28,7 +28,7 @@ public class IndexController {
 
     @GetMapping("/hello")
     public String hello(){
-        ResponseEntity<String> resp = restTemplate.getForEntity("http://sb-app-1-demo-cloud/hello", String.class);
+        ResponseEntity<String> resp = restTemplate.getForEntity("http://sb-app/hello", String.class);
         return "resp is "+resp;
     }
 

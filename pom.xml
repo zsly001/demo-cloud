@@ -14,12 +14,14 @@
         <module>cloud-eureka</module>
         <module>consul-app1</module>
         <module>consul-app2</module>
+        <module>sdk-fegin</module>
     </modules>
     <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <fegin.version>11.8</fegin.version>
     </properties>
 
     <dependencyManagement>

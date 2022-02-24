@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,7 +23,9 @@ public class UserController {
     @GetMapping("/user/{id}")
     public UserDto getUser(@PathVariable("id") Integer id){
         Objects.requireNonNull(id,"id不能为空");
-        return userService.getUser(id);
+        //return new UserDto(id,"nnn",new ArrayList<>());
+        UserDto user = userService.getUser(id);
+        return user;
     }
 
     @GetMapping("/list")

@@ -9,10 +9,16 @@ import java.util.List;
 
 public interface UserService {
 
-    @Headers({"Content-Type:application/json"})
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
     @RequestLine("GET /user/{id}")
     UserDto getUser(@Param("id") Integer id);
 
-    @RequestLine(("GET /user/list"))
-    List<UserDto> getUsers(List<Integer> ids);
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    @RequestLine(("GET /user/list?id={id}"))
+    List<UserDto> getUsers(@Param("id") List<Integer> ids);
+
+
+
+
+
 }

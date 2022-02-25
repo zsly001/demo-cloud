@@ -31,7 +31,8 @@ public class UserController {
     @GetMapping("/list")
     public List<UserDto> getUsers(@RequestParam("id") List<Integer> ids){
         Objects.requireNonNull(ids,"ids不能为空");
-        return userService.getUsers(ids);
+        List<UserDto> users = userService.getUsers(ids);
+        return users;
     }
 
 }

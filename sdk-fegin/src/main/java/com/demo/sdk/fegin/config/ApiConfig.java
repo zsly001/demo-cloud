@@ -26,8 +26,8 @@ public class ApiConfig {
 
         //ConfigurationManager.loadPropertiesFromResources("");
 
-        LoadBalancingTarget<UserService> balancingTarget = LoadBalancingTarget
-                .create(UserService.class, "http://10.182.24.107:8501/v1/catalog/service/sb-app");
+        /*LoadBalancingTarget<UserService> balancingTarget = LoadBalancingTarget
+                .create(UserService.class, "http://10.182.24.107:8501/v1/catalog/service/sb-app");*/
 
         /*LBClientFactory lbf = new LBClientFactory() {
             @Override
@@ -47,7 +47,7 @@ public class ApiConfig {
                 .client(ribbonClient)
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(UserService.class, "http://consul-server/v1/catalog/service/sb-app",new UserServiceFallback());
+                .target(UserService.class, "http://consul-server/",new UserServiceFallback());
 
 
     }

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping(value = "/user",produces = MediaType.APPLICATION_JSON_UTF8_VALUE,consumes = "application/json;charset=UTF-8")
+@RequestMapping(value = "/user")
 public class UserController {
 
     @Autowired

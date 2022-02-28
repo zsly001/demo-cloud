@@ -35,4 +35,10 @@ public class UserController {
         return users;
     }
 
+    @GetMapping("/host")
+    public String getProxyInfo(){
+        String host = System.getProperty("http.proxyHost");
+        String port = System.getProperty("http.proxyPort");
+        return "proxy is "+host+port;
+    }
 }

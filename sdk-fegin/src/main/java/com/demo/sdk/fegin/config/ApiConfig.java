@@ -7,6 +7,7 @@ import com.netflix.client.ClientFactory;
 import com.netflix.client.config.IClientConfig;
 import com.netflix.config.ConfigurationManager;
 import com.netflix.loadbalancer.ILoadBalancer;
+import feign.*;
 import feign.httpclient.ApacheHttpClient;
 import feign.hystrix.HystrixFeign;
 import feign.jackson.JacksonDecoder;
@@ -15,8 +16,11 @@ import feign.ribbon.LBClient;
 import feign.ribbon.LBClientFactory;
 import feign.ribbon.LoadBalancingTarget;
 import feign.ribbon.RibbonClient;
+import feign.slf4j.Slf4jLogger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class ApiConfig {
@@ -38,7 +42,7 @@ public class ApiConfig {
             }
         };*/
 
-        RibbonClient ribbonClient = RibbonClient.builder()
+        /*RibbonClient ribbonClient = RibbonClient.builder()
                 .delegate(new ApacheHttpClient())
                 .lbClientFactory(new ConfigLbClientFactory())
                 .build();
@@ -47,8 +51,17 @@ public class ApiConfig {
                 .client(ribbonClient)
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(UserService.class, "http://consul-server/",new UserServiceFallback());
+                .target(UserService.class, "http://consul-server/",new UserServiceFallback());*/
 
+        return Feign.builder()
+                .encoder(new JacksonEncoder())
+                .decoder(new JacksonDecoder())
+                .client(new ApacheHttpClient())
+                .retryer(Retryer.NEVER_RETRY)
+                .logger(new Slf4jLogger())
+                .logLevel(Logger.Level.FULL)
+                .options(new Request.Options(500, TimeUnit.MILLISECONDS,500,TimeUnit.MILLISECONDS,true))
+                .target(UserService.class,"http://10.73.29.111:6061");
 
     }
 
